@@ -43,7 +43,6 @@ function useAccountMutate() {
     useMutation({
       mutationFn: SendOTPEmailApi,
       onSuccess: (data) => {
-
         if (data.httpCode === 201) {
           toast.success("OTP has been sent to your email.", {
             position: "top-right",
@@ -97,16 +96,14 @@ function useAccountMutate() {
     mutationFn: authLoginApi,
     onSuccess: (data) => {
       removeToken();
-      saveToken(data?.data);
+      saveToken(data?.data.accessToken, data?.data.refreshToken);
       if (data?.message == "1") {
         navigate("/admin/");
       } else {
-      
         navigate("/");
       }
     },
     onError: (error) => {
-    
       toast.error("Wrong password or email", {
         position: "top-right",
         autoClose: 3000,
