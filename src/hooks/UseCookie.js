@@ -34,8 +34,14 @@ function UseCookie() {
       Cookies.set("accessToken", access_token, {
         ...objCookies,
       });
+      Cookies.set("refreshToken", refresh_token, {
+        ...objCookies,
+      });
     } else {
       Cookies.remove("accessToken", {
+        ...objCookies,
+      });
+      Cookies.remove("refreshToken", {
         ...objCookies,
       });
     }
@@ -43,7 +49,7 @@ function UseCookie() {
 
   const getToken = () => {
     const access_token = Cookies.get("accessToken");
-    const refresh_token = Cookies.get("rft");
+    const refresh_token = Cookies.get("refreshToken");
     return {
       access_token,
       refresh_token,
@@ -55,7 +61,7 @@ function UseCookie() {
       Cookies.remove("accessToken", {
         ...objCookies,
       });
-      Cookies.remove("rft", {
+      Cookies.remove("refreshToken", {
         ...objCookies,
       });
     }
