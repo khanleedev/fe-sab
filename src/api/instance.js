@@ -71,6 +71,9 @@ const responseInterceptor = async function (error) {
       return instance(originalRequest);
     } catch (err) {
       processQueue(err, null);
+      console.error("Token refresh failed:", err);
+      // Navigate to login if refresh fails
+      window.location.href = "/login";
       return Promise.reject(err);
     } finally {
       isRefreshing = false;
