@@ -96,8 +96,8 @@ function useAccountMutate() {
     mutationFn: authLoginApi,
     onSuccess: (data) => {
       removeToken();
-      saveToken(data?.data.accessToken, data?.data.refreshToken);
-      if (data?.message == "1") {
+      saveToken(data?.data.data.accessToken, data?.data.data.refreshToken);
+      if (data?.data.kind == "1") {
         navigate("/admin/");
       } else {
         navigate("/");

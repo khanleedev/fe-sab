@@ -15,8 +15,8 @@ const LoginPage = () => {
       password: values.password,
     };
     handleLogin(newValues).then((res) => {
-      localStorage.setItem("accessToken", JSON.stringify(res.data));
-      localStorage.setItem("userKind", JSON.stringify(res.message));
+      localStorage.setItem("accessToken", JSON.stringify(res.data.data.accessToken));
+      localStorage.setItem("userKind", JSON.stringify(res.data.data.kind));
  
     });
   };
