@@ -64,9 +64,9 @@ const responseInterceptor = async function (error) {
         `New tokens received: Access Token: ${newAccessToken}, Refresh Token: ${newRefreshToken}`
       );
       saveToken(newAccessToken, newRefreshToken);
-
       instance.defaults.headers.common["Authorization"] =
         "Bearer " + newAccessToken;
+      localStorage.setItem("accessToken", JSON.stringify(res.data.data.accessToken));
       processQueue(null, newAccessToken);
       return instance(originalRequest);
     } catch (err) {

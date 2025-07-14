@@ -61,7 +61,7 @@ export default function HomePage() {
     queryKey: ["listTicket"],
     queryFn: () =>
       getListTicketApi({}).then((res) => {
-        return res.data.content || res.data;
+        return res.data.data.content || res.data.data.data;
       }),
     onError: (err) => {
       const errorMessage =
